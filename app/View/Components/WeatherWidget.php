@@ -6,14 +6,20 @@ use Illuminate\View\Component;
 
 class WeatherWidget extends Component
 {
+    public $currentWeather;
+    public $futureWeather;
+
+
     /**
      * Create a new component instance.
      *
-     * @return void
+     * @param $currentWeather
+     * @param $futureWeather
      */
-    public function __construct()
+    public function __construct($currentWeather, $futureWeather)
     {
-        //
+        $this->currentWeather = $currentWeather;
+        $this->futureWeather = $futureWeather;
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $city = "Schagen";
+    $apiKey = config('services.open_weather_map.key');
+
+    $response = Http::get("https://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$apiKey}&units=metric");
+    $responseFuture = Http::get("https://api.openweathermap.org/data/2.5/forecast?q={$city}&cnt=5&appid={$apiKey}&units=metric");
+
+    return view('welcome', [
+        'currentWeather' => $response->json(),
+        'futureWeather' => $responseFuture->json(),
+    ]);
 });
