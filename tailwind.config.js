@@ -6,7 +6,14 @@ module.exports = {
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            spacing:{
+                '128': '32rem',
+            },
+            gridTemplateColumns:{
+                'weather': '2fr 8fr 2fr',
+            }
+        },
     },
     variants: {
         extend: {},
